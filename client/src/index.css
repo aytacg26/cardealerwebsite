@@ -1,0 +1,112 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  scrollbar-width: 2px;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: auto;
+}
+
+.mg-r-5 {
+  margin-right: 5px;
+}
+
+.mg-l-5 {
+  margin-left: 5px;
+}
+
+.mg-r-10 {
+  margin-right: 10px;
+}
+
+.mg-l-10 {
+  margin-left: 10px;
+}
+
+.mg-r-15 {
+  margin-right: 15px;
+}
+
+.mg-l-15 {
+  margin-left: 15px;
+}
+
+.mg-lr-10 {
+  margin: 0 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.button {
+  height: 35px;
+  width: 100%;
+  color: #fff;
+  cursor: pointer;
+  border: 0 none;
+  border-radius: 10px;
+  outline: 0 none;
+}
+
+.button-sm {
+  height: 32px;
+  width: 110px;
+}
+
+.button-x-sm {
+  height: 25px;
+  width: max-content;
+  padding: 5px 10px;
+}
+
+.button-fit {
+  height: 100%;
+}
+
+.button-icon {
+  font-size: 25px;
+}
+
+.button-trans {
+  background-color: rgba(0, 0, 0, 0.25);
+  color: rgb(0, 81, 255);
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.button-light {
+  background-color: rgb(250, 250, 250);
+  color: #676767;
+  border-radius: 4px;
+}
+
+.button-site-text {
+  color: #ff3448;
+}
+
+.button-site {
+  background-color: #ff3448;
+}
+
+.button-primary {
+  background-color: rgb(15, 36, 226);
+}
+
+.button-secondary {
+  background-color: rgb(146, 218, 38);
+}
+
+.button-shadow {
+  box-shadow: 1px 1px 3px black;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}

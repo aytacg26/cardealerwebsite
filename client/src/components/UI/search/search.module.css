@@ -1,0 +1,98 @@
+.SearchContainer {
+  position: absolute;
+  top: -150px;
+  z-index: 2;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.7)
+  );
+  backdrop-filter: blur(4px);
+  width: 100vw;
+  height: 140px;
+  box-shadow: 1px 1px 3px black;
+  padding: 5px 10px;
+  display: grid;
+  grid-template-columns: 1fr 220px 1fr;
+  grid-template-rows: 25px repeat(2, 45px);
+  gap: 3px;
+  border-radius: 0 0 10px 10px;
+  transition: linear 0.45s ease-in;
+  transition-property: top;
+  border: 1px solid #fff;
+  border-top: 0 none;
+}
+
+.SearchContainer.Active {
+  top: 73px;
+}
+
+.closeSearchWindow {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+}
+
+.SearchBoxArea {
+  grid-column: 1/-1;
+  grid-row: 2/3;
+}
+
+.ButtonDetails {
+  display: flex;
+  grid-column: 1/-1;
+  grid-row: 3/4;
+
+  justify-content: space-evenly;
+  margin-right: 10px;
+}
+
+/*Desktop CSS*/
+@media (min-width: 500px) and (max-width: 999px) {
+  .SearchContainer {
+    position: absolute;
+    top: -160px;
+    z-index: 3;
+    background-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(5px);
+    width: 60vw;
+    left: 50%;
+    margin-left: -30vw;
+    height: 160px;
+    box-shadow: 1px 1px 3px black;
+    padding: 5px 10px;
+    display: grid;
+    grid-template-columns: 1fr 220px 1fr;
+    grid-template-rows: 25px repeat(2, 55px);
+    gap: 3px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .SearchContainer.Active {
+    top: 73px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .SearchContainer {
+    position: absolute;
+    top: -160px;
+    z-index: 3;
+    background-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(5px);
+    width: 30vw;
+    left: 50%;
+    margin-left: -15vw;
+    height: 160px;
+    box-shadow: 1px 1px 3px black;
+    padding: 5px 10px;
+    display: grid;
+    grid-template-columns: 1fr 220px 1fr;
+    grid-template-rows: 25px repeat(2, 55px);
+    gap: 3px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .SearchContainer.Active {
+    top: 73px;
+  }
+}

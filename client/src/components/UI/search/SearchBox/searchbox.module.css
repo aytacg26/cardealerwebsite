@@ -1,0 +1,33 @@
+.SearchBoxArea {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  grid-template-rows: 1fr;
+  border: 1px solid #ececec;
+  height: 35px;
+  align-items: center;
+  justify-items: center;
+  border-radius: 10px;
+}
+
+.SearchBoxArea i {
+  color: #ff3448;
+}
+
+.SearchBoxArea input {
+  height: 100%;
+  width: 100%;
+  border: 0 none;
+  outline: 0 none;
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 0 10px 10px 0;
+  background: transparent;
+  color: rgb(17, 17, 17);
+  font-weight: 600;
+}
+
+.SearchBoxArea:focus-within {
+  border: 1px solid #ff3448;
+  box-shadow: 0 0 5px #ff3448;
+}

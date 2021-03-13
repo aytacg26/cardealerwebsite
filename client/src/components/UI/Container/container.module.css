@@ -1,0 +1,24 @@
+.Container {
+  position: absolute;
+  height: max-content;
+  top: 73px;
+  padding: 5px auto;
+}
+
+.Container.Mobile {
+  width: 100vw;
+}
+
+.Container.Desktop {
+  width: 55vw;
+  left: 50%;
+  margin-left: -27.5vw;
+}
+
+@media (min-width: 500px) and (max-width: 1000px) {
+  .Container.Desktop {
+    width: 70vw;
+    left: 50%;
+    margin-left: -35vw;
+  }
+}

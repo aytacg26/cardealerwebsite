@@ -1,0 +1,100 @@
+/*Mobil First*/
+.NavbarContainer {
+  position: fixed;
+  width: 100%;
+  height: 73px;
+  background: linear-gradient(to left top, #000, rgb(37, 34, 34));
+  color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  z-index: 999;
+}
+
+.activeArea {
+  width: 100%;
+  height: 28px;
+  font-size: 18px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.social {
+  width: 45%;
+  height: 28px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+
+.Navbar {
+  width: 100vw;
+  height: 45px;
+  padding: 5px 15px;
+  background-color: #ff3448;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userLogin {
+  width: 55%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: 10px;
+}
+
+.search {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 48px;
+}
+
+.logoArea {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logoArea img {
+  max-width: 60%;
+}
+
+.MenuIcons {
+  display: flex;
+  flex-direction: row nowrap;
+  width: 84px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*Desktop CSS*/
+@media (min-width: 500px) and (max-width: 999px) {
+  .logoArea,
+  .search {
+    max-width: 120px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1000px) {
+  .logoArea,
+  .search {
+    max-width: 120px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+  }
+}

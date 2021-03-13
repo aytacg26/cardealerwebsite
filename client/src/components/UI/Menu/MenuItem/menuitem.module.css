@@ -1,0 +1,15 @@
+.MenuItem {
+  height: 44px;
+  margin: 5px 0;
+
+  border-bottom: 1px solid rgba(182, 182, 182, 0.829);
+  width: 100%;
+  padding: 6px 10px 6px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+}
