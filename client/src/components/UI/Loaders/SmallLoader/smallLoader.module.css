@@ -1,0 +1,65 @@
+:root {
+  --yellow: #feb60a;
+  --red: #ff0062;
+  --blue: #00dbf9;
+  --violet: #da00f7;
+}
+
+.LoaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yellow,
+.red,
+.blue,
+.violet {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  margin: 5px;
+  background-image: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(0, 0, 0) 100%
+  );
+  animation: bounce 1.5s 0.5s linear infinite;
+}
+
+.yellow {
+  background-color: var(--yellow);
+  animation-delay: 0.1s;
+}
+
+.red {
+  background-color: var(--red);
+  animation-delay: 0.2s;
+}
+
+.blue {
+  background-color: var(--blue);
+  animation-delay: 0.3s;
+}
+
+.violet {
+  background-color: var(--violet);
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%,
+  50%,
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  25% {
+    transform: scale(0.6);
+    filter: blur(3px);
+  }
+  75% {
+    transform: scale(1.4);
+    filter: blur(3px);
+  }
+}
