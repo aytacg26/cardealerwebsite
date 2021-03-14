@@ -4,11 +4,16 @@ import Icon from '../Icons/Icon';
 import { isMobile } from '../../../utils/isMobile';
 import ProductCard from '../Cards/ProductCard/ProductCard';
 import PropTypes from 'prop-types';
+import MainCarousel from '../Carousels/MainCarousel/MainCarousel';
 
 const PresentationWindow = ({ title, content, iconClass }) => {
   const windowClass = isMobile()
     ? `${classes.WindowContainer}`
     : `${classes.WindowContainer} ${classes.Desktop}`;
+
+  const contentClass = isMobile()
+    ? `${classes.ContentArea}`
+    : `${classes.ContentArea} ${classes.Desktop}`;
 
   const [showcase, setShowcase] = useState({
     title: 'Kapat',
@@ -32,59 +37,33 @@ const PresentationWindow = ({ title, content, iconClass }) => {
     }
   };
 
-  const window = content ? (
-    <div
-      className={
-        !showcase.isClosed
-          ? `${windowClass}`
-          : `${windowClass} ${classes.Closed}`
-      }
-      onClick={handleWindow}
-      style={{ cursor: 'pointer' }}
-    >
-      <div className={classes.LabelArea}>
-        <Icon iconClass={iconClass} styleClass='icon-site-color mg-r-10' />
-        <span>{title}</span>
-        <Icon
-          iconClass={showcase.iconClass}
-          styleClass='icon mg-r-15 icon-site-color'
-          title={showcase.title}
-        />
+  const pWClass = !showcase.isClosed
+    ? `${windowClass}`
+    : `${windowClass} ${classes.Closed}`;
+
+  const contentAreaClass = !showcase.isClosed
+    ? `${contentClass}`
+    : `${contentClass} ${classes.Closed}`;
+
+  const window =
+    content.length > 0 ? (
+      <div className={pWClass}>
+        <div className={classes.LabelArea} onClick={handleWindow}>
+          <Icon iconClass={iconClass} styleClass='icon-site-color mg-r-10' />
+          <span>{title}</span>
+          <Icon
+            iconClass={showcase.iconClass}
+            styleClass='icon mg-r-15 icon-site-color'
+            title={showcase.title}
+          />
+        </div>
+        <div className={contentAreaClass}>
+          {!showcase.isClosed
+            ? content.map((item) => <ProductCard {...item} key={item.id} />)
+            : null}
+        </div>
       </div>
-      <div
-        className={
-          !showcase.isClosed
-            ? `${classes.ContentArea}`
-            : `${classes.ContentArea} ${classes.Closed}`
-        }
-      >
-        {!showcase.isClosed ? (
-          <div>
-            {content.map((item) => (
-              <ProductCard
-                key={item.id}
-                id={item.id}
-                model={item.model}
-                marka={item.marka}
-                yil={item.yil}
-                fiyat={item.fiyat}
-                yakit={item.yakit}
-                vites={item.vites}
-                satici={item.satici}
-                renk={item.renk}
-                sahibinden={item.sahibinden}
-                galeri={item.galeri}
-                fiyatGoster={item.fiyatGoster}
-                paraBirimi={item.paraBirimi}
-                ilanTarih={item.ilanTarih}
-                resimler={item.resimler}
-              />
-            ))}
-          </div>
-        ) : null}
-      </div>
-    </div>
-  ) : null;
+    ) : null;
 
   return window;
 };
