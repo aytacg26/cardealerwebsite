@@ -76,7 +76,7 @@ const ProductCard = (props) => {
     <div className={cardClass}>
       <div className={classes.imageAlan}>
         <img
-          src={resimler[0]}
+          src={resimler ? resimler[0] : ''}
           alt={`${marka} ${model} ${yil}`}
           title={`${marka} ${model} ${yil}`}
         />

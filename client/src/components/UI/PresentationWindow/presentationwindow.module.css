@@ -8,7 +8,7 @@
 }
 
 .WindowContainer.Desktop {
-  height: 550px;
+  height: 580px;
 }
 
 .LabelArea {
@@ -30,33 +30,11 @@
   margin: 5px;
 }
 
-.ContentArea.Desktop {
-  max-height: 500px;
-  overflow: auto;
-  padding: 10px;
-  transition: linear 0.4s ease-in all;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin: 5px auto;
-}
-
-.WindowContainer.Closed {
-  height: 33px;
-  border-radius: 5px;
-}
-
-.WindowContainer.Desktop.Closed {
-  height: 33px;
-  border-radius: 5px;
-}
-
-.ilanBulunamadi {
-  text-align: center;
-  color: #676767;
-  font-size: 13px;
-}
-
 .ProductCard {
   display: flex;
+}
+
+.ProductCardContainer {
+  position: relative;
+  max-width: 100%;
 }

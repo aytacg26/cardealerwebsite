@@ -5,7 +5,6 @@ const flickityOptions = {
 };
 
 const Carousel = (props) => {
-  console.log('It it working');
   return (
     <Flickity
       className={'carousel'} // default ''
