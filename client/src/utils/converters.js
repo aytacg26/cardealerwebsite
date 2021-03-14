@@ -81,3 +81,58 @@ export const pricePrettier = (price, currency) => {
 export const selectTitle = (titleTR, titleEN, language = 'tr') => {
   return language === 'tr' ? titleTR : titleEN;
 };
+
+/**
+ * This function will create array of group of arrays from the given array under the given group number. That is if we would like to group values of array to three
+ * groupNumber will be three and this will return an array of arrays which each array will have three elements if the main array is divisible to three, if it is not
+ * last array will have remaining element(s), if we would like to exclude last values, exactGroups should be set true. (Default value of exactGroups is false)
+ * Ex: main array = [1,2,3,4,5,6], groupNumber=3, return value will be [[1,2,3], [4,5,6]]
+ * @param {Array} array - Main array to be grouped in given number
+ * @param {Number} groupNumber - Number of each group (2,3,4, etc.)
+ * @param {Boolean} exactGroups - If only exact groups are required and excluding the values which will not create an exact group of given number won't create a problem, value of exactGroups must be true, otherwise should be set to false (Default value is false)
+ */
+export const groupArray = (array, groupNumber, exactGroups = false) => {
+  try {
+    if (array !== undefined && array !== null) {
+      const isValid = Array.isArray(array) && array instanceof Array;
+
+      if (isValid) {
+        if (groupNumber !== null && groupNumber !== undefined) {
+          const groupArr = [];
+          let checkArr = [];
+
+          for (let i = 0; i < array.length; i++) {
+            checkArr.push(array[i]);
+
+            if (checkArr.length === groupNumber) {
+              groupArr.push(checkArr);
+              checkArr = [];
+            }
+
+            if (
+              i === array.length - 1 &&
+              array.length % groupNumber > 0 &&
+              !exactGroups
+            ) {
+              groupArr.push(checkArr);
+            }
+          }
+
+          return groupArr;
+        }
+
+        return array;
+      }
+    } else {
+      console.error(
+        'Null || Undefined : the array argument of groupArray function is null or undefined'
+      );
+      return [];
+    }
+  } catch (error) {
+    console.error(
+      `Unexpected Error : ${error.message} >>> An unexpected error occured in groupArray function`
+    );
+    return [];
+  }
+};
