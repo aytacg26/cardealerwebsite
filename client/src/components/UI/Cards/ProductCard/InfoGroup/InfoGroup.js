@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import classes from './infoGroup.module.css';
+import PropTypes from 'prop-types';
 
 const InfoGroup = ({ title, data }) => {
   return (
@@ -14,6 +15,11 @@ const InfoGroup = ({ title, data }) => {
       ) : null}
     </Fragment>
   );
+};
+
+InfoGroup.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
 };
 
 export default InfoGroup;
