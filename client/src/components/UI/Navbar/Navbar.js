@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, lazy, Suspense } from 'react';
 import classes from './navbar.module.css';
 import Icon from '../Icons/Icon';
-import logo from '../../../images/logo.png';
 import { Link } from 'react-router-dom';
-import Menu from '../Menu/Menu';
-import Search from '../search/Search';
+import SmallLoader from '../Loaders/SmallLoader/SmallLoader';
+
+const Menu = React.lazy(() => import('../Menu/Menu'));
+const Search = React.lazy(() => import('../search/Search'));
 
 const Navbar = (props) => {
   const [open, setOpen] = useState(false);
@@ -102,8 +103,12 @@ const Navbar = (props) => {
             />
           </Link>
         </div>
-        <Search active={search} />
-        <Menu active={open} />
+        <Suspense fallback={<SmallLoader />}>
+          <Search active={search} />
+        </Suspense>
+        <Suspense fallback={<SmallLoader />}>
+          <Menu active={open} />
+        </Suspense>
       </div>
     </Fragment>
   );
