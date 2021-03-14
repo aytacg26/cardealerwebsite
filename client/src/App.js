@@ -4,11 +4,7 @@ import './flickity.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/pages/Home/Home';
 import Arac from './components/pages/Arac/Arac';
-// import Galeriler from './components/pages/Galeriler/Galeriler';
-// import Otomobil from './components/pages/Otomobil/Otomobil';
-// import Motosiklet from './components/pages/Motosiklet/Motosiklet';
-// import Sahibinden from './components/pages/Sahibinden/Sahibinden';
-// import Ticari from './components/pages/Ticari/Ticari';
+import Loader from './components/UI/Loaders/SmallLoader/SmallLoader';
 
 const Galeriler = React.lazy(() =>
   import('./components/pages/Galeriler/Galeriler')
@@ -16,15 +12,12 @@ const Galeriler = React.lazy(() =>
 const Otomobil = React.lazy(() =>
   import('./components/pages/Otomobil/Otomobil')
 );
-
 const Motosiklet = React.lazy(() =>
   import('./components/pages/Motosiklet/Motosiklet')
 );
-
 const Sahibinden = React.lazy(() =>
   import('./components/pages/Sahibinden/Sahibinden')
 );
-
 const Ticari = React.lazy(() => import('./components/pages/Ticari/Ticari'));
 
 const App = () => {
@@ -37,7 +30,7 @@ const App = () => {
             exact
             path='/ticari'
             render={() => (
-              <Suspense fallback={<div>Page Loading...</div>}>
+              <Suspense fallback={<Loader />}>
                 <Ticari />
               </Suspense>
             )}
@@ -46,7 +39,7 @@ const App = () => {
             exact
             path='/sahibinden'
             render={() => (
-              <Suspense fallback={<div>Page Loading</div>}>
+              <Suspense fallback={<Loader />}>
                 {' '}
                 <Sahibinden />
               </Suspense>
@@ -56,7 +49,7 @@ const App = () => {
             exact
             path='/motosiklet'
             render={() => (
-              <Suspense fallback={<div>Page Loading...</div>}>
+              <Suspense fallback={<Loader />}>
                 <Motosiklet />
               </Suspense>
             )}
@@ -65,7 +58,7 @@ const App = () => {
             exact
             path='/otomobil'
             render={() => (
-              <Suspense fallback={<div>Page Loading</div>}>
+              <Suspense fallback={<Loader />}>
                 <Otomobil />
               </Suspense>
             )}
@@ -74,7 +67,7 @@ const App = () => {
             exact
             path='/galeriler'
             render={() => (
-              <Suspense fallback={<div>Page Loading</div>}>
+              <Suspense fallback={<Loader />}>
                 <Galeriler />
               </Suspense>
             )}
