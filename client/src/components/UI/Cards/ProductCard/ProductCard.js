@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classes from './carcard.module.css';
+import classes from './productCard.module.css';
 import InfoGroup from './InfoGroup/InfoGroup';
+import { isMobile } from '../../../../utils/isMobile';
+
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import {
   pricePrettier,
@@ -27,27 +30,32 @@ const ProductCard = (props) => {
     resimler,
   } = props;
 
-  const language = 'en';
+  const cardClass = isMobile()
+    ? `${classes.ProductCard}`
+    : `${classes.ProductCardDesktop}`;
+
+  //TODO : language should come from localStorage, add language selection option to Navbar
+  const language = 'tr';
   const yetkili = sahibinden
     ? selectTitle('İletişim', 'Contact', language)
     : selectTitle('Galeri', 'Car Dealer', language);
   const ilanZaman = moment(ilanTarih).fromNow();
   const tarih = language === 'en' ? ilanZaman : momentToTr(ilanZaman);
 
-  const infoGroupArr = [
-    { title: selectTitle('Marka', 'Brand', language), data: marka },
-    { title: selectTitle('Model', 'Model', language), data: model },
-    { title: selectTitle('Yıl', 'Year', language), data: yil },
-    { title: selectTitle('Yakıt', 'Fuel', language), data: yakit },
-    { title: selectTitle('Vites', 'Transmission', language), data: vites },
-    { title: yetkili, data: satici },
-    {
-      title: selectTitle('Fiyat', 'Price', language),
-      data: pricePrettier(fiyat, paraBirimi),
-    },
-    { title: selectTitle('Renk', 'Price', language), data: renk },
-    { title: selectTitle('İlan Tarihi', 'Posted', language), data: tarih },
-  ];
+  const infoGroupArr = !isMobile()
+    ? [
+        { title: selectTitle('Marka', 'Brand', language), data: marka },
+        { title: selectTitle('Model', 'Model', language), data: model },
+        { title: selectTitle('Yıl', 'Year', language), data: yil },
+        { title: yetkili, data: satici },
+        { title: selectTitle('Yayınlanma', 'Posted', language), data: tarih },
+      ]
+    : [
+        { title: selectTitle('Marka', 'Brand', language), data: marka },
+        { title: selectTitle('Model', 'Model', language), data: model },
+        { title: selectTitle('Yıl', 'Year', language), data: yil },
+        { title: yetkili, data: satici },
+      ];
 
   const info = infoGroupArr.map((inf, index) => {
     if (inf.title === 'Fiyat' && !fiyatGoster) {
@@ -58,15 +66,27 @@ const ProductCard = (props) => {
           title={inf.title}
           data={inf.data}
           key={`${inf.title}-${index}`}
+          mobile={isMobile()}
         />
       );
     }
   });
 
   return (
-    <div>
-      <div>Image Area</div>
-      <div>{info}</div>
+    <div className={cardClass}>
+      <div className={classes.imageAlan}>
+        <img
+          src={resimler[0]}
+          alt={`${marka} ${model} ${yil}`}
+          title={`${marka} ${model} ${yil}`}
+        />
+      </div>
+      <div className={classes.infoAlan}>{info}</div>
+      <div className={classes.YayinDetayAlan}>
+        <Link to='/1' className={classes.YayinDetay}>
+          Detay
+        </Link>
+      </div>
     </div>
   );
 };
@@ -86,19 +106,3 @@ ProductCard.propTypes = {
 };
 
 export default ProductCard;
-
-/**
- *    {
-      id: '604ba2ffed34280211afh5bt',
-      marka: 'Mercedes',
-      model: 'CLS350 Elegant',
-      yil: '2019',
-      yakit: 'Dizel',
-      vites: 'Otomatik',
-      satici: 'Dünya Oto Ltd',
-      fiyat: '55000',
-      paraBirimi: 'UK Pound',
-      fiyatGoster: false,
-      ilanTarih: '2021-03-13T17:18:28.923+00:00',
-    },
- */
