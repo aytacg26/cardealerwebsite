@@ -107,6 +107,10 @@ a {
   box-shadow: 1px 1px 3px black;
 }
 
+.button-dashed {
+  border: 1px dashed #ececec;
+}
+
 ::-webkit-scrollbar {
   width: 2px;
 }

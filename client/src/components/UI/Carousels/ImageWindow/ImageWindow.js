@@ -17,7 +17,7 @@ const ImageWindow = ({ source, name, text, hasLink, linkText, directLink }) => {
         <div className={classes.TextBand}>
           <span>{text}</span>
           {hasLink && linkText ? (
-            <Button btnClass='button button-x-sm button-trans mg-lr-10 button-site-text'>
+            <Button btnClass='button button-x-sm button-trans mg-lr-10 button-site-text button-dashed'>
               {linkText}
             </Button>
           ) : null}
