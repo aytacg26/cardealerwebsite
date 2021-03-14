@@ -1,0 +1,103 @@
+.ProductCard {
+  max-height: 100px;
+  display: flex;
+  flex-flow: row nowrap;
+  width: 98%;
+  box-shadow: 1px 1px 2px black;
+  margin: 5px auto;
+  border-radius: 5px;
+}
+
+.ProductCard .imageAlan {
+  display: flex;
+  height: 90px;
+  width: 220px;
+  justify-content: center;
+  margin: 5px;
+}
+
+.ProductCard .imageAlan img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10%;
+}
+
+.ProductCard .infoAlan {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.ProductCardDesktop {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: max-content;
+  width: 330px;
+  height: 480px;
+  box-shadow: 1px 1px 3px black;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 5px 0 1px 0;
+}
+
+.ProductCardDesktop .imageAlan {
+  display: flex;
+  height: 285px;
+  width: 330px;
+  justify-content: center;
+}
+
+.ProductCardDesktop .imageAlan img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.ProductCardDesktop .infoAlan {
+  padding: 7px;
+  border-top: 1px solid #ececec;
+}
+
+.ProductCardDesktop .YayinDetayAlan {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.ProductCardDesktop .YayinDetay {
+  color: blue;
+  font-size: 14px;
+  padding: 5px;
+  width: 60px;
+  display: block;
+  border: 1px dashed #676767;
+  text-align: center;
+  border-radius: 5px;
+  margin-right: 8px;
+}
+
+@media (min-width: 700px) and (max-width: 1180px) {
+  .ProductCardDesktop {
+    width: 250px;
+    height: 340px;
+    box-shadow: 1px 1px 3px black;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 170px 120px 30px;
+  }
+
+  .ProductCardDesktop .imageAlan {
+    display: flex;
+    height: 170px;
+    width: 250px;
+    justify-content: center;
+  }
+
+  .ProductCardDesktop .imageAlan img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
