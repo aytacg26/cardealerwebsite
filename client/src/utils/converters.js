@@ -1,7 +1,7 @@
 import { addComma } from './numValidators';
 
 /**
- *
+ * Converts moment fromNow to turkish version
  * @param {String} fromNowResult - moment gives from now result in english (locale doesn't work properly), the result of moment entered
  * @returns Turkish version of fromNow() result
  */
@@ -38,7 +38,7 @@ export const momentToTr = (fromNowResult) => {
 };
 
 /**
- *
+ * price and currency which will come from database will be prettified to currency sign and comma seperated price
  * @param {String || Int} price - price of product
  * @param {String} currency - currency of price UK POUND, Turkish Lira or Euros
  * @returns prettified price with currency sign (e.g : £45,000.23)
