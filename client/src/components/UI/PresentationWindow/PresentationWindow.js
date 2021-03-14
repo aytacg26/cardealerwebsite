@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import classes from './presentationwindow.module.css';
 import Icon from '../Icons/Icon';
 import { isMobile } from '../../../utils/isMobile';
+import ProductCard from '../Cards/ProductCard/ProductCard';
+import PropTypes from 'prop-types';
 
 const PresentationWindow = ({ title, content, iconClass }) => {
   const windowClass = isMobile()
@@ -59,7 +61,24 @@ const PresentationWindow = ({ title, content, iconClass }) => {
         {!showcase.isClosed ? (
           <div>
             {content.map((item) => (
-              <span>{item.model}</span>
+              <ProductCard
+                key={item.id}
+                id={item.id}
+                model={item.model}
+                marka={item.marka}
+                yil={item.yil}
+                fiyat={item.fiyat}
+                yakit={item.yakit}
+                vites={item.vites}
+                satici={item.satici}
+                renk={item.renk}
+                sahibinden={item.sahibinden}
+                galeri={item.galeri}
+                fiyatGoster={item.fiyatGoster}
+                paraBirimi={item.paraBirimi}
+                ilanTarih={item.ilanTarih}
+                resimler={item.resimler}
+              />
             ))}
           </div>
         ) : null}
@@ -68,6 +87,12 @@ const PresentationWindow = ({ title, content, iconClass }) => {
   ) : null;
 
   return window;
+};
+
+PresentationWindow.propTypes = {
+  title: PropTypes.string,
+  content: PropTypes.array.isRequired,
+  iconClass: PropTypes.string,
 };
 
 export default PresentationWindow;
