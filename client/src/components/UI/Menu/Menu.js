@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import classes from './menu.module.css';
 import MenuItem from './MenuItem/MenuItem';
+import PropTypes from 'prop-types';
 
 const Menu = ({ active }) => {
+  //Will come from database
   const menuItems = [
     {
       id: 'itm-1-anasayfa',
@@ -97,6 +99,14 @@ const Menu = ({ active }) => {
       ))}
     </div>
   );
+};
+
+Menu.defaultProps = {
+  active: false,
+};
+
+Menu.propTypes = {
+  active: PropTypes.bool.isRequired,
 };
 
 export default Menu;
