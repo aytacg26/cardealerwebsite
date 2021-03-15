@@ -114,3 +114,81 @@ a {
 ::-webkit-scrollbar {
   width: 1px;
 }
+
+.alice-carousel__next-btn,
+.alice-carousel__prev-btn {
+  position: absolute !important;
+  font-size: 50px;
+  color: transparent !important;
+  font-weight: 700;
+  top: 40%;
+  margin-top: -12.5px;
+  display: flex !important;
+  right: 5px;
+  width: 25px !important;
+  height: 25px !important;
+  border-radius: 50%;
+  background: rgba(26, 26, 26, 0.63);
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.678) !important;
+}
+
+.alice-carousel__prev-btn {
+  left: 5px;
+}
+
+.alice-carousel__prev-btn-item,
+.alice-carousel__next-btn-item {
+  display: flex !important;
+  color: black !important;
+  font-size: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.alice-carousel__next-btn-item::before {
+  content: '\1F892';
+  font-size: 38px !important;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 8px;
+  margin-left: 6px;
+  color: #fff;
+}
+
+.alice-carousel__prev-btn-item::before {
+  content: '\1F890';
+  font-size: 38px !important;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 8px;
+  margin-right: 6px;
+  color: #fff;
+}
+
+.alice-carousel__play-btn-wrapper {
+  position: relative;
+  width: 50px !important;
+  height: 50px !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  margin-bottom: -25px !important;
+}
+
+.alice-carousel__play-btn-item::before,
+.alice-carousel__play-btn-item::after {
+  border-left-color: #ff3448 !important;
+}
+
+.alice-carousel__wrapper {
+  cursor: grabbing !important;
+}
+
+.alice-carousel__dots {
+  margin: 10px 3px 5px !important;
+}
+
+.alice-carousel__dots-item:not(.__custom) {
+  width: 12px !important;
+  height: 12px !important;
+}

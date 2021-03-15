@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Container from '../../UI/Container/Container';
-import ImageCarousel from '../../UI/Carousels/ImageCarousel';
+
 import PresentationWindow from '../../UI/PresentationWindow/PresentationWindow';
-import MainCarousel from '../../UI/Carousels/MainCarousel/MainCarousel';
+import ImageCarousel from '../../UI/Carousels/ImageCarousel';
 import classes from './home.module.css';
 
 const Home = (props) => {
@@ -306,32 +306,48 @@ const Home = (props) => {
     },
   ]);
 
+  const vitrinCarouselOptions = {
+    hasCarousel: true,
+    autoPlay: true,
+    autoPlayInterval: 7000,
+    disableDotsControls: true,
+    disableButtonsControls: false,
+    autoPlayControls: true,
+  };
+
   return (
     <Container>
-      <ImageCarousel isMobile={props._isMobile} />
+      <ImageCarousel />
       <div className={classes.HomeMain}>
         <PresentationWindow
           title='Vitrin İlanları'
           iconClass='fas fa-store'
           content={vitrinIlanlari}
+          carouselOptions={vitrinCarouselOptions}
+          linkToPage='/vitrin'
         />
 
         <PresentationWindow
           title='En Son Eklenenler'
           iconClass='fas fa-plus-square'
-          content={[]}
+          content={vitrinIlanlari}
+          carouselOptions={vitrinCarouselOptions}
+          linkToPage='/ensoneklenenler'
         />
         <PresentationWindow
           title='Galeriler'
           iconClass='fas fa-user-tie'
-          content={[]}
+          content={vitrinIlanlari}
+          linkToPage='/galeriler'
         />
         <PresentationWindow
           title='Markalar'
           iconClass='far fa-copyright'
-          content={[]}
+          content={vitrinIlanlari}
+          linkToPage='/markalar'
         />
       </div>
+      <div>Footer</div>
     </Container>
   );
 };
