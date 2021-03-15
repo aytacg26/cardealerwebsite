@@ -3,16 +3,23 @@ import classes from './imagewindow.module.css';
 import Button from '../../Button/Button';
 
 const ImageWindow = ({ source, name, text, hasLink, linkText, directLink }) => {
+  const handleDragStart = (e) => e.preventDefault();
+
   return (
     <div
       style={{
-        background: 'black',
         width: '100%',
         height: '40vh',
         color: '#fff',
       }}
     >
-      <img src={source} alt={name} name={name} className={classes.Image} />
+      <img
+        src={source}
+        alt={name}
+        name={name}
+        className={classes.Image}
+        onDragStart={handleDragStart}
+      />
       {text || hasLink ? (
         <div className={classes.TextBand}>
           <span>{text}</span>

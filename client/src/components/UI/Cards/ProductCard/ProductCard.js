@@ -14,6 +14,7 @@ import {
 
 const ProductCard = (props) => {
   const {
+    id,
     marka,
     model,
     yil,
@@ -42,20 +43,17 @@ const ProductCard = (props) => {
   const ilanZaman = moment(ilanTarih).fromNow();
   const tarih = language === 'en' ? ilanZaman : momentToTr(ilanZaman);
 
-  const infoGroupArr = !isMobile()
-    ? [
-        { title: selectTitle('Marka', 'Brand', language), data: marka },
-        { title: selectTitle('Model', 'Model', language), data: model },
-        { title: selectTitle('Yıl', 'Year', language), data: yil },
-        { title: yetkili, data: satici },
-        { title: selectTitle('Yayınlanma', 'Posted', language), data: tarih },
-      ]
-    : [
-        { title: selectTitle('Marka', 'Brand', language), data: marka },
-        { title: selectTitle('Model', 'Model', language), data: model },
-        { title: selectTitle('Yıl', 'Year', language), data: yil },
-        { title: yetkili, data: satici },
-      ];
+  const infoGroupArr = [
+    { title: selectTitle('Marka', 'Brand', language), data: marka },
+    { title: selectTitle('Model', 'Model', language), data: model },
+    { title: selectTitle('Yıl', 'Year', language), data: yil },
+    { title: yetkili, data: satici },
+    {
+      title: selectTitle('Fiyat', 'Price', language),
+      data: fiyat ? pricePrettier(fiyat, paraBirimi) : 0,
+    },
+    { title: selectTitle('Yayınlanma', 'Posted', language), data: tarih },
+  ];
 
   const info = infoGroupArr.map((inf, index) => {
     if (inf.title === 'Fiyat' && !fiyatGoster) {
@@ -83,7 +81,7 @@ const ProductCard = (props) => {
       </div>
       <div className={classes.infoAlan}>{info}</div>
       <div className={classes.YayinDetayAlan}>
-        <Link to='/1' className={classes.YayinDetay}>
+        <Link to={`/car/${id}`} className={classes.YayinDetay}>
           Detay
         </Link>
       </div>

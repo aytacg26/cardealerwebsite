@@ -1,22 +1,32 @@
-import Flickity from 'react-flickity-component';
+import React from 'react';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import { isMobile } from '../../../../utils/isMobile';
 
-const flickityOptions = {
-  initialIndex: 2,
-};
-
-const Carousel = (props) => {
+const MainCarousel = ({
+  items,
+  autoPlay,
+  autoPlayInterval = 5000,
+  disableDotsControls,
+  autoPlayControls,
+  disableButtonsControls,
+  carouselOptions,
+}) => {
   return (
-    <Flickity
-      className={'carousel'} // default ''
-      elementType={'div'} // default 'div'
-      options={props.options} // takes flickity options {}
-      disableImagesLoaded={false} // default false
-      reloadOnUpdate // default false
-      static // default false
-    >
-      {props.children}
-    </Flickity>
+    <AliceCarousel
+      mouseTracking
+      touchTracking
+      items={items}
+      autoHeight={true}
+      autoWidth={true}
+      disableButtonsControls={isMobile() ? isMobile() : disableButtonsControls}
+      autoPlay={autoPlay}
+      autoPlayInterval={autoPlayInterval}
+      autoPlayControls={isMobile() ? !isMobile() : autoPlayControls}
+      infinite={true}
+      disableDotsControls={isMobile() ? isMobile() : disableDotsControls}
+    />
   );
 };
 
-export default Carousel;
+export default MainCarousel;
