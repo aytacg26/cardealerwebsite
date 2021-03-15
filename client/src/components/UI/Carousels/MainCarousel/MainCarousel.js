@@ -10,8 +10,9 @@ const MainCarousel = ({
   disableDotsControls,
   autoPlayControls,
   disableButtonsControls,
-  carouselOptions,
 }) => {
+  const _isMobile = isMobile();
+
   return (
     <AliceCarousel
       mouseTracking
@@ -19,12 +20,12 @@ const MainCarousel = ({
       items={items}
       autoHeight={true}
       autoWidth={true}
-      disableButtonsControls={isMobile() ? isMobile() : disableButtonsControls}
+      disableButtonsControls={_isMobile ? _isMobile : disableButtonsControls}
       autoPlay={autoPlay}
       autoPlayInterval={autoPlayInterval}
-      autoPlayControls={isMobile() ? !isMobile() : autoPlayControls}
+      autoPlayControls={_isMobile ? !_isMobile : autoPlayControls}
       infinite={true}
-      disableDotsControls={isMobile() ? isMobile() : disableDotsControls}
+      disableDotsControls={_isMobile ? _isMobile : disableDotsControls}
     />
   );
 };
