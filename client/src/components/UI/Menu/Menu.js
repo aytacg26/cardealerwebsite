@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import classes from './menu.module.css';
 import MenuItem from './MenuItem/MenuItem';
 import PropTypes from 'prop-types';
+import menuContext from '../../../context/menuContext/menuContext';
 
-const Menu = ({ active }) => {
+const Menu = () => {
   //Will come from database
   const menuItems = [
     {
@@ -80,10 +81,9 @@ const Menu = ({ active }) => {
     },
   ];
 
-  //This will come from redux or context API
-  const isActive = active;
+  const { menuIsClosed } = useContext(menuContext);
 
-  const menuClass = isActive
+  const menuClass = !menuIsClosed
     ? `${classes.Menu} ${classes.active}`
     : `${classes.Menu}`;
 
@@ -99,14 +99,6 @@ const Menu = ({ active }) => {
       ))}
     </div>
   );
-};
-
-Menu.defaultProps = {
-  active: false,
-};
-
-Menu.propTypes = {
-  active: PropTypes.bool.isRequired,
 };
 
 export default Menu;

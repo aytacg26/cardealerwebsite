@@ -1,31 +1,26 @@
-import React, { Fragment, useState, lazy, Suspense } from 'react';
+import React, { Fragment, useState, lazy, Suspense, useContext } from 'react';
 import classes from './navbar.module.css';
 import Icon from '../Icons/Icon';
 import { Link } from 'react-router-dom';
 import SmallLoader from '../Loaders/SmallLoader/SmallLoader';
+import menuContext from '../../../context/menuContext/menuContext';
 
 const Menu = React.lazy(() => import('../Menu/Menu'));
 const Search = React.lazy(() => import('../search/Search'));
 
 const Navbar = (props) => {
-  const [open, setOpen] = useState(false);
   const [search, setSearch] = useState(false);
-  const [menuIcon, setMenuIcon] = useState('fas fa-bars');
   const [searchIcon, setSearchIcon] = useState('fas fa-search-plus');
+  const { menuIsClosed, menuIcon, openMenu, closeMenu } = useContext(
+    menuContext
+  );
 
   const handleMenu = () => {
-    setOpen((prev) => {
-      if (!prev) {
-        setMenuIcon('fas fa-times');
-
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0;
-      } else {
-        setMenuIcon('fas fa-bars');
-      }
-
-      return !prev;
-    });
+    if (menuIsClosed) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
 
     setSearchIcon('fas fa-search-plus');
     setSearch(false);
@@ -35,9 +30,6 @@ const Navbar = (props) => {
     setSearch((prev) => {
       if (!prev) {
         setSearchIcon('fas fa-search-minus');
-
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0;
       } else {
         setSearchIcon('fas fa-search-plus');
       }
@@ -45,8 +37,7 @@ const Navbar = (props) => {
       return !prev;
     });
 
-    setMenuIcon('fas fa-bars');
-    setOpen(false);
+    closeMenu();
   };
 
   return (
@@ -54,18 +45,24 @@ const Navbar = (props) => {
       <div className={classes.NavbarContainer}>
         <div className={classes.activeArea}>
           <div className={classes.social}>
-            <Icon
-              iconClass='fab fa-facebook-square mg-lr-10 icon icon-md'
-              title='KKTC Araç Bul Facebook Sayfası'
-            />
-            <Icon
-              iconClass='fab fa-instagram-square mg-lr-10 icon icon-md'
-              title='KKTC Araç Bul Instagram Sayfası'
-            />
-            <Icon
-              iconClass='fab fa-youtube-square mg-lr-10 icon icon-md'
-              title='KKTC Araç Bul Youtube Kanalı'
-            />
+            <a href='https://www.facebook.com' target='_blank'>
+              <Icon
+                iconClass='fab fa-facebook-square mg-lr-10 icon icon-md'
+                title='KKTC Araç Bul Facebook Sayfası'
+              />
+            </a>
+            <a href='https://www.instagram.com' target='_blank'>
+              <Icon
+                iconClass='fab fa-instagram-square mg-lr-10 icon icon-md'
+                title='KKTC Araç Bul Instagram Sayfası'
+              />
+            </a>
+            <a href='https://www.youtube.com' target='_blank'>
+              <Icon
+                iconClass='fab fa-youtube-square mg-lr-10 icon icon-md'
+                title='KKTC Araç Bul Youtube Kanalı'
+              />
+            </a>
           </div>
           <div className={classes.userLogin}>
             <Link to='/kayit'>
@@ -107,7 +104,7 @@ const Navbar = (props) => {
           <Search active={search} />
         </Suspense>
         <Suspense fallback={<SmallLoader />}>
-          <Menu active={open} />
+          <Menu />
         </Suspense>
       </div>
     </Fragment>
