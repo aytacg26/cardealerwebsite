@@ -1,11 +1,21 @@
 import { useLayoutEffect, useState } from 'react';
+import { isMobile } from '../utils/isMobile';
 
 const useMediaQuery = () => {
-  const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });
+  const [screenSize, setScreenSize] = useState({
+    width: 0,
+    height: 0,
+    mobile: false,
+  });
 
   useLayoutEffect(() => {
     const updateScreenSize = () => {
-      setScreenSize({ width: window.innerWidth, height: window.innerHeight });
+      const checkMobile = isMobile();
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        mobile: checkMobile,
+      });
     };
 
     window.addEventListener('resize', updateScreenSize);
