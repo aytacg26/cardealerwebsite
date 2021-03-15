@@ -192,3 +192,10 @@ a {
   width: 12px !important;
   height: 12px !important;
 }
+
+.StandardWindow {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
