@@ -1,6 +1,5 @@
 import React, { Fragment, Suspense } from 'react';
 import Navbar from './components/UI/Navbar/Navbar';
-import './flickity.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/pages/Home/Home';
 import Arac from './components/pages/Arac/Arac';
