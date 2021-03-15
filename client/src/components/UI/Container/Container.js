@@ -6,6 +6,7 @@ import Footer from '../Footer/Footer';
 const Container = ({ children }) => {
   const _isMobile = isMobile();
 
+  console.log(_isMobile);
   const containerClass = _isMobile
     ? `${classes.Container} ${classes.Mobile}`
     : `${classes.Container} ${classes.Desktop}`;
@@ -15,7 +16,6 @@ const Container = ({ children }) => {
   return (
     <Fragment>
       <div className={containerClass}>{children}</div>
-      <Footer />
     </Fragment>
   );
 };

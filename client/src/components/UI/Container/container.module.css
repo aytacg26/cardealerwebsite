@@ -10,15 +10,55 @@
 }
 
 .Container.Desktop {
-  width: 55vw;
+  width: 58vw;
   left: 50%;
-  margin-left: -27.5vw;
+  margin-left: -29vw;
 }
 
-@media (min-width: 500px) and (max-width: 1000px) {
+@media (min-width: 500px) and (max-width: 1281px) {
+  .Container.Desktop {
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+  }
+}
+
+@media (min-width: 1282px) and (max-width: 1380px) {
+  .Container.Desktop {
+    width: 86vw;
+    left: 50%;
+    margin-left: -43vw;
+  }
+}
+
+@media (min-width: 1381px) and (max-width: 1601px) {
+  .Container.Desktop {
+    width: 75vw;
+    left: 50%;
+    margin-left: -37.5vw;
+  }
+}
+
+@media (min-width: 1602px) and (max-width: 1700px) {
   .Container.Desktop {
     width: 70vw;
     left: 50%;
     margin-left: -35vw;
+  }
+}
+
+@media (min-width: 1701px) and (max-width: 2050px) {
+  .Container.Desktop {
+    width: 55vw;
+    left: 50%;
+    margin-left: -27.5vw;
+  }
+}
+
+@media (min-width: 2051px) {
+  .Container.Desktop {
+    width: 45vw;
+    left: 50%;
+    margin-left: -22.5vw;
   }
 }
