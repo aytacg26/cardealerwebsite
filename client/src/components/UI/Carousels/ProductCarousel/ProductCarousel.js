@@ -6,7 +6,8 @@ import { isMobile } from '../../../../utils/isMobile';
 
 const ProductCarousel = ({ content, carouselOptions }) => {
   const [groupedArray, setGroupedArray] = useState([]);
-  const _isMobile = isMobile();
+  const [mobile, setMobile] = useState(false);
+
   const handleDragStart = (e) => e.preventDefault();
   const {
     autoPlay,
@@ -17,16 +18,20 @@ const ProductCarousel = ({ content, carouselOptions }) => {
   } = carouselOptions;
 
   useEffect(() => {
+    const _isMobile = isMobile();
+
+    setMobile(_isMobile);
+
     const allProducts = content.map((item) => (
       <ProductCard {...item} key={item.id} />
     ));
 
-    if (!_isMobile) {
+    if (!mobile) {
       setGroupedArray(groupArray(allProducts, 3));
     } else {
       setGroupedArray(allProducts);
     }
-  }, [content, _isMobile]);
+  }, [content, mobile]);
 
   const group = groupedArray.map((group, index) => (
     <div

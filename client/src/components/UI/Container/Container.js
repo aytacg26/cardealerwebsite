@@ -1,17 +1,23 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import classes from './container.module.css';
 import { isMobile } from '../../../utils/isMobile';
 import Footer from '../Footer/Footer';
 
 const Container = ({ children }) => {
-  const _isMobile = isMobile();
+  const [containerClass, setContainerClass] = useState('');
+  const [mobile, setMobile] = useState(false);
 
-  console.log(_isMobile);
-  const containerClass = _isMobile
-    ? `${classes.Container} ${classes.Mobile}`
-    : `${classes.Container} ${classes.Desktop}`;
+  useEffect(() => {
+    const _isMobile = isMobile();
 
-  console.log(containerClass);
+    setMobile(_isMobile);
+
+    if (mobile) {
+      setContainerClass(`${classes.Container} ${classes.Mobile}`);
+    } else {
+      setContainerClass(`${classes.Container} ${classes.Desktop}`);
+    }
+  }, [mobile]);
 
   return (
     <Fragment>
